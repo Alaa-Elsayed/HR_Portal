@@ -1,0 +1,115 @@
+﻿@using HRPortal.ViewModels.Account
+@using HRPortal.Core
+@model LoginVM
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SPEED HR Portal | Login</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body class="hold-transition login-page" style="background: url('../Content/Images/login_bg.jpeg') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;  background-size: cover;">
+
+    <div class="login-box">
+
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+
+                <div class="login-logo">
+                    <img src="../Content/Images/Logo_login.png" alt="SPEED Co." style="display: block; margin-left: auto; margin-right: auto;">
+                    <b>HR </b>Portal
+                </div>
+                <p class="login-box-msg">@LocalizedStrings.Msg_LoginHeader</p>
+
+                <form name="loginForm" action="#" method="post" novalidate="novalidate">
+                    @Html.AntiForgeryToken()
+                    <div class="input-group mb-3">
+                        @Html.TextBoxFor(m => m.UserName, new { id = "UserName", name = "UserName", @class = "form-control", placeholder = LocalizedStrings.UserName })
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                        @Html.ValidationMessageFor(model => model.UserPassword, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="input-group mb-3">
+                        @Html.TextBoxFor(m => m.UserPassword, new { id = "UserPassword", name = "UserPassword", type = "password", autocomplete = "off", @class = "form-control", placeholder = LocalizedStrings.Password })
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                        @Html.ValidationMessageFor(model => model.UserPassword, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="icheck-blue">
+                                @Html.CheckBoxFor(m => m.RememberMe, new { id = "RememberMe", type = "checkbox" })
+
+                                <label for="RememberMe">
+                                    @LocalizedStrings.RememberMe
+                                </label>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <button id="submit" type="submit" class="btn btn-primary btn-block">@LocalizedStrings.SignIn</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+                <br />
+                <hr />
+                @if (LocalizationHelper.IsRighToLeft())
+                {
+                    <input type="image" class="img-circle elevation-2" data-toggle="tooltip" data-placement="right" title="Switch to English" src="@Url.Content("~/Content/Images/gb.svg")" onclick="ChangeLanguage('@LocalizedLanguages.English')" alt="English" width="32" height="32">
+                }
+                else
+                {
+                    <input type="image" class="img-circle elevation-2" data-toggle="tooltip" data-placement="right" title="اللغة العربية" src="@Url.Content("~/Content/Images/eg.svg")" onclick="ChangeLanguage('@LocalizedLanguages.Arabic')" alt="اللغة العربية" width="32" height="32">
+                }
+            </div>
+            <!-- /.login-card-body -->
+        </div>
+    </div>
+    <!-- /.login-box -->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/adminlte")
+
+    <script>
+        $(document).ready(function ()
+        {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+        function ChangeLanguage(code)
+        {
+            //document.cookie = "_hrportalCulture=" + (code) + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+            //location.reload();
+            var url = '@Url.Action("SwitchLanguage", "Account")';
+            $.get(url, { language: code }, function (data)
+            {
+              // alert(data);
+                
+            });
+
+            location.reload();
+        }
+    </script>
+
+</body>
+</html>

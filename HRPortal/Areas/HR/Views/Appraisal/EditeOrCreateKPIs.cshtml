@@ -1,0 +1,178 @@
+﻿@model HRPortal.ViewModels.HR.Appraisal.IndecatorsVM
+@using Syncfusion.EJ2
+@using HRPortal.Business.HR
+@{
+
+    if (Model == null)
+    {
+        ViewBag.Title = "New KPIs";
+    }
+    else
+    {
+        ViewBag.Title = "Edite KPIs";
+    }
+    Layout = "~/Views/Shared/_Page.cshtml";
+}
+
+
+<div style="padding:10px;">
+    @using (Html.BeginForm("EditeOrCreateKPIs", "Appraisal", new { area = "HR" }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PerformanceIndicatorName, htmlAttributes: new { @class = "control-label " })
+            <div>
+                @Html.EditorFor(model => model.PerformanceIndicatorName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PerformanceIndicatorName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IndicatorTypeName, htmlAttributes: new { @class = "control-label " })
+            <div>
+
+                @Html.DropDownListFor(model => model.IndicatorTypeName, ViewBag.IndicatorType as SelectList, "---Select Indicator Type--- ", new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.IndicatorTypeName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.WeightOrValue, htmlAttributes: new { @class = "control-label " })
+            <div>
+                @Html.TextBoxFor(model => model.WeightOrValue, new { @class = "form-control", type = "number" })
+                @Html.ValidationMessageFor(model => model.WeightOrValue, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DepartmentName, htmlAttributes: new { @class = "control-label " })
+            <div>
+                @if (Model != null)
+                {
+                    @Html.EditorFor(model => model.DepartmentName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                }
+                else
+                {
+                    @Html.DropDownListFor(model => model.DepartmentName, ViewBag.Department as SelectList, "---Select Department---", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.DepartmentName, "", new { @class = "text-danger" })
+
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.JobName, htmlAttributes: new { @class = "control-label " })
+            <div>
+                @if (Model != null)
+                {
+                    @Html.EditorFor(model => model.JobName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                }
+                else
+                {
+                    @Html.DropDownListFor(model => model.JobName, new SelectList(""), "---Select Job Title---", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.JobName, "", new { @class = "text-danger" })
+                }
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.Active, htmlAttributes: new { @class = "control-label " })
+            <div>
+                @Html.EditorFor(model => model.Active, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Active, "", new { @class = "text-danger" })
+            </div>*@
+            <div class="icheck-blue">
+                @Html.CheckBoxFor(model => model.Active, new { id = "Active", type = "checkbox" })
+                <label for="Active">
+                    Active :
+                </label>
+
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="icheck-blue">
+                @Html.CheckBoxFor(m => m.AxceededValue, new { id = "AxceededValue", type = "checkbox" })
+                <label for="AxceededValue">
+                    Axceeded Value :
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KRA, htmlAttributes: new { @class = "control-label " })
+            @Html.TextAreaFor(m => m.KRA, new { placeholder = "", @class = "form-control" })
+        </div>
+
+        @if (Model != null)
+        {
+            @Html.HiddenFor(model => model.PerformanceIndicatorID)
+            @Html.HiddenFor(model => model.JobID)
+            @Html.HiddenFor(model => model.PerformanceIndicatorTypeID)
+            @Html.HiddenFor(model => model.DepartmentID)
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @if (Model != null)
+                {
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-save">&nbsp;</i>Save</button>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-save">&nbsp;</i>Create</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#DepartmentName").change(function () {
+               
+                $.get("/HR/Appraisal/GetJobTitle", { DepartmentID: $("#DepartmentName").val() }, function (data) {
+                
+                    $("#JobName").empty();
+                    $.each(data, function (index, row) {
+                        $("#JobName").append("<option value='" + row.JobID + "'>" + row.JobName + "</option>")
+                    });
+                });
+            })
+
+            $("#IndicatorTypeName").change(function () {
+                var text = $("#IndicatorTypeName option:selected").text();
+                //$("#WeightOrValue").removeAttr("disabled", "disabled");
+                
+                if (text == "KPI")
+                {
+                   
+                    $("#WeightOrValue").attr("min", "0");
+                    $("#WeightOrValue").attr("max", "100");
+                }
+                else 
+                {
+                    $("#WeightOrValue").attr("min", "0");
+                    $("#WeightOrValue").attr("max", "2");
+                }
+            });
+
+        });
+    </script>
+
+}

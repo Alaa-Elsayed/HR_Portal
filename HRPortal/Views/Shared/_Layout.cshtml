@@ -1,0 +1,159 @@
+﻿@using MvcSiteMapProvider.Web.Html
+@using HRPortal.Core
+@using HRPortal.Business.Account
+@using Syncfusion.EJ2
+
+@helper ShowToast()
+{
+    if (TempData.ContainsKey("ShowToast"))
+    {
+        if (bool.Parse(TempData["ShowToast"].ToString()))
+        {
+            <script>
+                   toastr["@TempData["ToastType"].ToString()"]("@TempData["ToastMessage"].ToString()");
+            </script>
+        }
+    }
+}
+@helper ShowMessage()
+{
+    if (TempData.ContainsKey("ShowMessage"))
+    {
+        if (bool.Parse(TempData["ShowMessage"].ToString()))
+        {
+            if (TempData["MessageType"].ToString() == "0")
+            {
+                <div class="alert alert-info alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h6><i class="icon fas fa-info-circle"></i>@TempData["Message"].ToString()</h6>
+                </div>
+            }
+            else if (TempData["MessageType"].ToString() == "1")
+            {
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h6><i class="icon fas fa-check"></i>@TempData["Message"].ToString()</h6>
+                </div>
+            }
+            else if (TempData["MessageType"].ToString() == "2")
+            {
+                <div class="alert alert-warning alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h6><i class="icon fas fa-exclamation-triangle"></i>@TempData["Message"].ToString()</h6>
+
+                </div>
+            }
+            else if (TempData["MessageType"].ToString() == "3")
+            {
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h6><i class="icon fas fa-ban"></i> @TempData["Message"].ToString()</h6>
+                </div>
+            }
+        }
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SPEED HR Portal | @ViewBag.Title</title>
+
+    @if (LocalizationHelper.IsRighToLeft())
+    {
+        @Scripts.Render("~/bundles/popper")
+    }
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/ej2/bootstrap4.css")
+    @Scripts.Render("~/Scripts/ej2/ej2.min.js")
+    @Scripts.Render("~/Scripts/ej2/ej.localetexts.ar.js")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/toastr")
+    @Scripts.Render("~/bundles/sitejs")
+    @if (LocalizationHelper.IsRighToLeft())
+    {
+        @Styles.Render("~/bundles/rtlcss")
+        @Scripts.Render("~/bundles/bootstraprtl")
+    }
+
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed pace-primary">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        @Html.Partial("_NavBar")
+        @Html.Partial("_SideBar")
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            @if (ViewBag.Title != "Home")
+                            {
+                                <h1><i class="far fa-file-alt"></i>&nbsp;&nbsp;@ViewBag.Title</h1>
+                            }
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                @Html.MvcSiteMap().SiteMapPath("CustomSiteMapPathHelperModel")
+                            </ol>
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    @ShowToast()
+                    @ShowMessage()
+                    @RenderBody()
+                </div>
+                <br />
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer text-sm">
+            <div class="float-right d-none d-sm-block">
+                <b>v</b>1.0.0
+            </div>
+            <strong>Copyright &copy; 2020 <a href="http://www.speed.com.eg">SPEED Co.</a></strong>, All rights
+            reserved.
+        </footer>
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <script>
+        function ChangeLanguage(code)
+        {
+            //document.cookie = "_hrportalCulture=" + (code) + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+            //location.reload();
+            var url = '@Url.Action("SwitchLanguage", "Account")';
+            $.get(url, { language: code }, function (data)
+            {
+              // alert(data);
+                
+            });
+
+            location.reload();
+        }
+    </script>
+    <!-- ./wrapper -->
+@Scripts.Render("~/bundles/jslibs")
+@Scripts.Render("~/bundles/adminlte")
+@RenderSection("scripts", required: false)
+@Html.EJS().ScriptManager()
+</body>
+</html>

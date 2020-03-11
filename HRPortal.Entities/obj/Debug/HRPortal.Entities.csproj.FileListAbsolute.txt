@@ -1,0 +1,7 @@
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Entities\bin\Debug\HRPortal.Entities.dll
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Entities\bin\Debug\HRPortal.Entities.pdb
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Entities\bin\Debug\PetaPoco.dll
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Entities\obj\Debug\HRPortal.Entities.csprojAssemblyReference.cache
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Entities\obj\Debug\HRPortal.Entities.csproj.CopyComplete
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Entities\obj\Debug\HRPortal.Entities.dll
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Entities\obj\Debug\HRPortal.Entities.pdb

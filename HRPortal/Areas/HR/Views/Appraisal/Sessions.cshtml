@@ -1,0 +1,83 @@
+﻿@using Syncfusion.EJ2
+@using HRPortal.Business.HR
+@{
+    ViewBag.Title = "Appraisal Sessions";
+    Layout = "~/Views/Shared/_Page.cshtml";
+}
+
+    <div id="sessions_content" style="height:550px;">
+        @Html.EJS().Grid("grdPerformanceSessions").DataSource(PerformanceLogic.GetAllPerformanceSessions()).QueryCellInfo("queryCellInfo").Height("100%").Width("auto").AllowPdfExport().AllowExcelExport().ToolbarClick("toolbarClick").Columns(col =>
+        {
+        col.Field("PerformanceSessionID").HeaderText("ID").Width(70).Add();
+        col.Field("PerformanceSessionName").HeaderText("Session Name").Add();
+        col.Field("SessionStartDate").HeaderText("Start Date").Format(new { type = "dateTime", format = "yyyy-MM-dd" }).Add();
+        col.Field("SessionStartedByEmail").HeaderText("Started By").Add();
+        col.Field("Status").HeaderText("Status").Template("#statusTemplate").Add();
+        col.Field("SessionEndDate").HeaderText("End Date").Format(new { type = "dateTime", format = "yyyy-MM-dd" }).Add();
+        col.Field("SessionClosedByEmail").HeaderText("Closed By").Add();
+        col.Field("PublishedStatus").HeaderText("Published").Template("#PublishedStatusTemplate").Add();
+        col.Field("Notes").HeaderText("Notes").Add();
+        col.HeaderText("Edit").Template("#sessionedittemp").Width("70").Add();
+        }).AllowPaging(true).PageSettings(page => page.PageSize(25).PageCount(10)).Toolbar(new List<object>()
+        {
+            new { text = LocalizedStrings.NewRecord, tooltipText = LocalizedStrings.NewRecord, id = "new_session", prefixIcon = "e-add" },"ExcelExport", "Search"
+
+        }).AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.CheckBox); }).EnableRtl(LocalizationHelper.IsRighToLeft()).Locale(LocalizationHelper.CurrentLanguage).Render()
+       
+        <script>
+
+                function toolbarClick(args) {
+                    var gridObj = document.getElementById("grdPerformanceSessions").ej2_instances[0];
+                    if (args.item.id === 'grdPerformanceSessions_excelexport') {
+                        gridObj.excelExport();
+                    }
+                    if (args.item.id === 'new_session') {
+                        window.location.href = '@Url.Action("EditSession","Appraisal", new { area = "HR" })';
+                    }
+                }
+
+                function queryCellInfo(args)
+                {
+                    if (args.column.field === 'Status') {
+                        if (args.cell.textContent === "Active") {
+                            args.cell.querySelector(".statustxt").classList.add("e-activecolor");
+                            args.cell.querySelector(".statustemp").classList.add("e-activecolor");
+                        }
+                        else
+                        {
+                            args.cell.querySelector(".statustxt").classList.add("e-inactivecolor");
+                            args.cell.querySelector(".statustemp").classList.add("e-inactivecolor");
+                        }
+                    }
+
+                    if (args.column.field === 'PublishedStatus') {
+                        if (args.cell.textContent === "Published") {
+                            args.cell.querySelector(".statustxt").classList.add("e-activecolor");
+                            args.cell.querySelector(".statustemp").classList.add("e-activecolor");
+                        }
+                        else
+                        {
+                            args.cell.querySelector(".statustxt").classList.add("e-inactivecolor");
+                            args.cell.querySelector(".statustemp").classList.add("e-inactivecolor");
+                        }
+                    }
+                }
+        </script>
+        <script>
+
+        </script>
+        <script type="text/x-jsrender" id="statusTemplate">
+            <div id="status" class="statustemp">
+                <span class="statustxt">${Status}</span>
+            </div>
+        </script>
+        <script type="text/x-jsrender" id="PublishedStatusTemplate">
+            <div id="status" class="statustemp">
+                <span class="statustxt">${PublishedStatus}</span>
+            </div>
+        </script>
+        <script id="sessionedittemp" type="text/x-template">
+            <a href='@Url.Action("EditSession","Appraisal", new { area = "HR" })/${PerformanceSessionID}'><i class="fa fa-edit">&nbsp;</i>@LocalizedStrings.Edit</a>
+        </script>
+
+    </div>

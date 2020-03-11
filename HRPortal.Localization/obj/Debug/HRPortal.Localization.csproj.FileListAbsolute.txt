@@ -1,0 +1,10 @@
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Localization\bin\Debug\HRPortal.Localization.dll
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Localization\bin\Debug\HRPortal.Localization.pdb
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Localization\bin\Debug\ar\HRPortal.Localization.resources.dll
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Localization\obj\Debug\HRPortal.Localization.csprojAssemblyReference.cache
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Localization\obj\Debug\HRPortal.Localization.LocalizedStrings.resources
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Localization\obj\Debug\HRPortal.Localization.LocalizedStrings.ar.resources
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Localization\obj\Debug\HRPortal.Localization.csproj.GenerateResource.cache
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Localization\obj\Debug\ar\HRPortal.Localization.resources.dll
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Localization\obj\Debug\HRPortal.Localization.dll
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Localization\obj\Debug\HRPortal.Localization.pdb

@@ -1,0 +1,113 @@
+﻿@using Syncfusion.EJ2
+@using HRPortal.Business.HR
+@using HRPortal.Entities.Views
+@model HRPortal.ViewModels.HR.MyTeam.EvaluateVM
+@{
+    ViewBag.Title = string.Format("{0} ({1})", LocalizedStrings.Evaluate, Model.FullName);
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@helper RenderIndicators()
+{
+    if (Model == null)
+    {
+        <div style="padding-top:10px;padding-left:10px;padding-right:10px;">
+            <div class="alert alert-warning alert-dismissible">
+                <h6><i class="icon fas fa-exclamation-triangle"></i>No Idicators Found !</h6>
+            </div>
+        </div>
+    }
+    else
+    {
+
+        @Html.HiddenFor(m => m.EmployeeEvaluationID)
+        @Html.HiddenFor(m => m.EmployeeCode)
+        @Html.HiddenFor(m => m.FullName)
+        @Html.HiddenFor(m => m.PerformanceSessionName)
+
+
+        for (int i = 0; i < Model.EmployeeIndicators.Count; i++)
+        {
+            @Html.HiddenFor(m => m.EmployeeIndicators[i].EmployeeIndicatorID)
+            @Html.HiddenFor(m => m.EmployeeIndicators[i].IndicatorWeightOrValue)
+            @Html.HiddenFor(m => m.EmployeeIndicators[i].PerformanceIndicatorTypeID)
+            @Html.HiddenFor(m => m.EmployeeIndicators[i].PerformanceIndicatorName)
+
+            if (Model.EmployeeIndicators[i].PerformanceIndicatorTypeID == 1)
+            {
+
+                <div>
+                    <div class="card card-body" style="padding:0px;margin:0px;">
+                        <div class="row" style="margin-left:5px;margin-right:5px;">
+                            <div class="col-md-6" style="padding-top:12px;">
+                                <i class="fa fa-question circle-icon bg-maroon"></i><b>&nbsp;&nbsp;@Model.EmployeeIndicators[i].PerformanceIndicatorName</b>
+                            </div>
+                            <div class="col-md-2 mb-2" style="padding-top:7px;">
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.EmployeeIndicators[i].WeightOrValue, new { @class = "form-control", autocomplete = "off",required="required", type = "number", min = 0, max = 100 })
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-2 float-left" style="padding-top:12px;">
+                                <span class="weight"><i class="fas fa-balance-scale"></i> Weight :  @Model.EmployeeIndicators[i].IndicatorWeightOrValue %</span>
+                            </div>
+                            <div class="col-md-2 float-left" style="padding-top:12px;">
+                                @Html.ValidationMessageFor(model => model.EmployeeIndicators[i].WeightOrValue, LocalizedStrings.InvalidInput, new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div>
+                    
+                    <div class="card card-body" style="padding:0px;margin:0px;" >
+                        <div class="row" style="margin-left:5px;margin-right:5px;">
+                            <div class="col-md-6 " style="padding-top:12px;">
+                                <i class="fa fa-question circle-icon bg-yellow"></i><b>&nbsp;&nbsp;@Model.EmployeeIndicators[i].PerformanceIndicatorName</b>
+                            </div>
+                            <div class="col-md-2 mb-2" style="padding-top:7px;">
+                                @Html.TextBoxFor(model => model.EmployeeIndicators[i].WeightOrValue, new { @class = "form-control", autocomplete = "off",required="required", type = "number", min = 0, max = Model.EmployeeIndicators[i].IndicatorWeightOrValue })
+                            </div>
+                            <div class="col-md-2 pull-left" style="padding-top:12px;">
+                                <span class="weight"><i class="far fa-dot-circle"></i> Value : @Model.EmployeeIndicators[i].IndicatorWeightOrValue</span>
+                            </div>
+                            <div class="col-md-2 float-left" style="padding-top:12px;">
+                                @Html.ValidationMessageFor(model => model.EmployeeIndicators[i].WeightOrValue, LocalizedStrings.InvalidInput, new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+    }
+}
+<div id="appraisals_content">
+    <div class="row">
+        <div class="col-md-12">
+            <style>
+                .field-validation-valid {
+                    display: none;
+                }
+
+                .validation-summary-valid {
+                    display: none;
+                }
+            </style>
+            @using (Html.BeginForm("Evaluate", "MyTeam", FormMethod.Post))
+            {
+                <div class="timelinexxxx">
+                    @RenderIndicators()
+                    <div>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-save">&nbsp;</i>Save Appraisal</button>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+</div>

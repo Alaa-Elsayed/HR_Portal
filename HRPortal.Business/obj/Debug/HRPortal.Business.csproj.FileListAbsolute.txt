@@ -1,0 +1,16 @@
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Business\bin\Debug\HRPortal.Business.dll
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Business\bin\Debug\HRPortal.Business.pdb
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Business\bin\Debug\HRPortal.Core.dll
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Business\bin\Debug\HRPortal.Entities.dll
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Business\bin\Debug\HRPortal.Localization.dll
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Business\bin\Debug\HRPortal.ViewModels.dll
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Business\bin\Debug\PetaPoco.dll
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Business\bin\Debug\HRPortal.Core.pdb
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Business\bin\Debug\HRPortal.Entities.pdb
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Business\bin\Debug\HRPortal.Localization.pdb
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Business\bin\Debug\HRPortal.ViewModels.pdb
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Business\bin\Debug\ar\HRPortal.Localization.resources.dll
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Business\obj\Debug\HRPortal.Business.csprojAssemblyReference.cache
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Business\obj\Debug\HRPortal.Business.csproj.CopyComplete
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Business\obj\Debug\HRPortal.Business.dll
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.Business\obj\Debug\HRPortal.Business.pdb

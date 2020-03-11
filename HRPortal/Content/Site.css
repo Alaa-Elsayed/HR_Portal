@@ -1,0 +1,69 @@
+﻿.statustemp.e-inactivecolor {
+     background-color: #ffd7cc;
+}
+
+.statustemp.e-activecolor {
+    background-color: #ccffcc;
+}
+
+.statustxt.e-activecolor {
+    color: #00cc00;
+}
+
+.statustxt.e-inactivecolor {
+    color: #e60000;
+}
+
+.statustemp.e-inactivecolor {
+    width: 85px;
+}
+
+.statustemp.e-activecolor {
+    width: 85px;
+}
+
+.statustemp {
+    position: relative;
+    border-radius: 5px;
+    text-align: center
+}
+
+.e-grid .e-content {
+    overflow-y: hidden !important;
+}
+
+.swing {
+    animation: swing ease-in-out 1s infinite alternate;
+    transform-origin: center 0px;
+}
+
+@keyframes swing {
+    0% {
+        transform: rotate(5deg);
+    }
+
+    100% {
+        transform: rotate(-5deg);
+    }
+}
+
+.toast {
+    opacity: 0.9 !important;
+}
+
+.weight 
+{
+    float:left;
+    
+}
+
+.circle-icon {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 25px;
+    vertical-align: middle;
+    padding: 5px;
+}
+

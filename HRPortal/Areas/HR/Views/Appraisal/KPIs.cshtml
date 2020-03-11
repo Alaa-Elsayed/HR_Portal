@@ -1,0 +1,68 @@
+﻿@using Syncfusion.EJ2
+@using HRPortal.Business.HR
+@{
+    ViewBag.Title = "KPIs";
+    Layout = "~/Views/Shared/_Page.cshtml";
+}
+
+
+    <div class="control-section" >
+        <div id="sessions_content" >
+            @Html.EJS().Grid("GridIndecators").DataSource(PerformanceIndecatorsLogic.GetAllPerformanceIndecators()).QueryCellInfo("queryCellInfo").AllowSelection(false).AllowResizing().Height("100%").Width("auto").AllowPdfExport().AllowExcelExport().ToolbarClick("toolbarClick").Columns(col =>
+            {
+                col.Field("PerformanceIndicatorID").HeaderText("ID").Width("60").Add();
+                col.Field("PerformanceIndicatorName").HeaderText("Indicator Name").Width("400").Add();
+                col.Field("WeightOrValue").HeaderText(" Value").Width("100").Add();
+                col.Field("PerformanceIndicatorTypeName").HeaderText(" Type").Width("120").Add();
+                col.Field("JobName").HeaderText("Job Name").Width("200").Add();
+                col.Field("DepartmentName").HeaderText("Department Name").Add();
+                col.Field("Status").HeaderText("Status").Template("#statusTemplate").Width("100").Add();
+                col.Field("Level_Name").HeaderText("Indicator Level").Width("200").Add();
+                col.HeaderText("Edit").Template("#sessionedittemp").Width("70").Add();
+            }).AllowPaging().PageSettings(page => page.PageSize(25).PageCount(10)).AllowGrouping().GroupSettings(group => group.Columns(new string[] { "DepartmentName", "JobName" })).Toolbar(new List<object>()
+            {
+                new { text = LocalizedStrings.NewRecord, tooltipText = LocalizedStrings.NewRecord, id = "new_session", prefixIcon = "e-add" },"ExcelExport", "Search"
+
+            }).AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.CheckBox); }).EnableRtl(LocalizationHelper.IsRighToLeft()).Locale(LocalizationHelper.CurrentLanguage).Render()
+
+            <script>
+                function toolbarClick(args) {
+                    var gridObj = document.getElementById("GridIndecators").ej2_instances[0];
+                    if (args.item.id === 'GridIndecators_pdfexport') {
+                        gridObj.pdfExport();
+                    }
+                    if (args.item.id === 'GridIndecators_excelexport') {
+                        gridObj.excelExport();
+                    }
+                    if (args.item.id === 'GridIndecators_csvexport') {
+                        gridObj.csvExport();
+                    }
+                    if (args.item.id === 'new_session') {
+                        window.location.href = '@Url.Action("EditeOrCreateKPIs","Appraisal", new { area = "HR" })';
+                    }
+                }
+                function queryCellInfo(args) {
+                    if (args.column.field === 'Status') {
+                        if (args.cell.textContent === "Active") {
+                            args.cell.querySelector(".statustxt").classList.add("e-activecolor");
+                            args.cell.querySelector(".statustemp").classList.add("e-activecolor");
+                        }
+                        else {
+                            args.cell.querySelector(".statustxt").classList.add("e-inactivecolor");
+                            args.cell.querySelector(".statustemp").classList.add("e-inactivecolor");
+                        }
+                    }
+                }
+            </script>
+            <script type="text/x-jsrender" id="statusTemplate">
+                <div id="status" class="statustemp">
+                    <span class="statustxt">${Status}</span>
+                </div>
+            </script>
+            <script id="sessionedittemp" type="text/x-template">
+                <a href='@Url.Action("EditeOrCreateKPIs","Appraisal", new { area = "HR" })/${PerformanceIndicatorID}'><i class="fa fa-edit">&nbsp;</i>@LocalizedStrings.Edit</a>
+            </script>
+          
+        </div>
+
+    </div>

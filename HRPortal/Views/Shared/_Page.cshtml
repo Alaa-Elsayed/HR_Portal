@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Default box -->
+<div class="card">
+    <div class="card-body" style="padding:0px;margin:0px;">
+        @RenderBody()
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+@RenderSection("scripts", required: false)

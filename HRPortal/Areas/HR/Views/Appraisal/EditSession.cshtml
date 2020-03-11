@@ -1,0 +1,71 @@
+﻿@using Syncfusion.EJ2
+@using HRPortal.Business.HR
+@model HRPortal.ViewModels.HR.Appraisal.SessionVM
+@{
+    if(Model==null)
+    {
+        ViewBag.Title = "New Session";
+    }
+    else
+    {
+        ViewBag.Title = string.Format("Edit Session ({0})",Model.SessionName);
+    }
+
+    Layout = "~/Views/Shared/_Page.cshtml";
+}
+
+    <div id="view_content" style="padding:10px;">
+        @using (Html.BeginForm("EditSession", "Appraisal", new { area = "HumanResources" }, FormMethod.Post, new { @id = "frm-edit-session", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.SessionID);
+
+            <div class="form-group">
+                <label for="SessionName">Session Name<span style="color:red">&nbsp;*</span></label>
+                @Html.TextBoxFor(m => m.SessionName, new { id = "SessionName", name = "SessionName", placeholder = "Enter Session Name", @class = "form-control" })
+                @Html.ValidationMessage("SessionName", new { @class = "text-danger" })
+            </div>
+            if (Model != null)
+            {
+
+                <div class="form-group">
+                    <label for="StartDate">Start Date</label>
+                    @Html.TextBoxFor(m => m.StartDate, new { id = "StartDate", name = "StartDate", placeholder = "Start Date", @readonly = "readonly", @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label for="StartedBy">Started By</label>
+                    @Html.TextBoxFor(m => m.StartedBy, new { id = "StartedBy", name = "StartedBy", placeholder = "Started By", @readonly = "readonly", @class = "form-control" })
+                </div>
+
+                if (Model.Active !=null && Model.Active.Value)
+                {
+                    <div class="form-group">
+                        <div class="icheck-blue">
+                            @Html.CheckBoxFor(m => m.Active.Value, new { id = "Active", type = "checkbox" })
+                            <label for="Active">
+                                Active Session
+                            </label>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        <label for="EndDate">End Date</label>
+                        @Html.TextBoxFor(m => m.EndDate, new { id = "EndDate", name = "EndDate", placeholder = " ", @readonly = "readonly", @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="ClosedBy">Closed By</label>
+                        @Html.TextBoxFor(m => m.ClosedBy, new { id = "ClosedBy", name = "ClosedBy", placeholder = " ", @readonly = "readonly", @class = "form-control" })
+                    </div>
+                }
+            }
+            <div class="form-group">
+                <label for="exampleInputEmail1">Notes :</label>
+                @Html.TextAreaFor(m => m.Notes, new { id = "Notes", name = "Notes", placeholder = "Notes", @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-save">&nbsp;</i>Save Session</button>
+            </div>
+        }
+    </div>

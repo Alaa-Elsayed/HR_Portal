@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BD4023E5-63AF-476A-B152-85088B3EA63A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HRPortal</RootNamespace>
+    <AssemblyName>HRPortal</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.7</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptLib>dom,es2015</TypeScriptLib>
+    <TypeScriptOutFile />
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptLib>dom,es2015</TypeScriptLib>
+    <TypeScriptOutFile />
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcSiteMapProvider, Version=4.6.26.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcSiteMapProvider.MVC5.Core.4.6.26\lib\net45\MvcSiteMapProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcSiteMapProvider.WebActivator, Version=4.6.26.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcSiteMapProvider.MVC5.4.6.26\lib\net45\MvcSiteMapProvider.WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PetaPoco, Version=6.0.441.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PetaPoco.Compiled.6.0.441\lib\net45\PetaPoco.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.EJ2">
+      <HintPath>..\packages\Syncfusion.EJ2.MVC5.17.4.0.39\lib\net45\Syncfusion.EJ2.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing">
+      <HintPath>..\packages\Syncfusion.Licensing.17.4.0.39\lib\net45\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0.1\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\HR\Controllers\AppraisalController.cs" />
+    <Compile Include="Areas\HR\HRAreaRegistration.cs" />
+    <Compile Include="Areas\Manager\Controllers\MyTeamController.cs" />
+    <Compile Include="Areas\Manager\ManagerAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\adminlte.css" />
+    <Content Include="Content\alt\adminlte.components.css" />
+    <Content Include="Content\alt\adminlte.core.css" />
+    <Content Include="Content\alt\adminlte.extra-components.css" />
+    <Content Include="Content\alt\adminlte.pages.css" />
+    <Content Include="Content\alt\adminlte.plugins.css" />
+    <Content Include="Content\ej2\bootstrap.css" />
+    <Content Include="Content\ej2\bootstrap4.css" />
+    <Content Include="Content\ej2\compatibility\bootstrap.css" />
+    <Content Include="Content\ej2\compatibility\bootstrap4.css" />
+    <Content Include="Content\ej2\compatibility\fabric.css" />
+    <Content Include="Content\ej2\compatibility\highcontrast.css" />
+    <Content Include="Content\ej2\compatibility\material.css" />
+    <Content Include="Content\ej2\fabric.css" />
+    <Content Include="Content\ej2\highcontrast.css" />
+    <Content Include="Content\ej2\material.css" />
+    <Content Include="Content\Images\AdminLTELogo.png" />
+    <Content Include="Content\Images\avatar.png" />
+    <Content Include="Content\Images\avatar5.png" />
+    <Content Include="Content\Images\boxed-bg.jpg" />
+    <Content Include="Content\Images\boxed-bg.png" />
+    <Content Include="Content\Images\construction.png" />
+    <Content Include="Content\Images\default-150x150.png" />
+    <Content Include="Content\Images\eg.svg" />
+    <Content Include="Content\Images\gb.svg" />
+    <Content Include="Content\Images\hr_portal_bg.jpg" />
+    <Content Include="Content\Images\icons.png" />
+    <Content Include="Content\Images\Logo_xxl.png" />
+    <Content Include="Content\Plugins\fontawesome\css\all.css" />
+    <Content Include="Content\Plugins\fontawesome\css\brands.css" />
+    <Content Include="Content\Plugins\fontawesome\css\fontawesome.css" />
+    <Content Include="Content\Plugins\fontawesome\css\regular.css" />
+    <Content Include="Content\Plugins\fontawesome\css\solid.css" />
+    <Content Include="Content\Plugins\fontawesome\css\svg-with-js.css" />
+    <Content Include="Content\Plugins\fontawesome\css\v4-shims.css" />
+    <Content Include="Content\Plugins\fontawesome\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\Plugins\fontawesome\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\Plugins\fontawesome\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\Plugins\icheck-bootstrap\icheck-bootstrap.css" />
+    <Content Include="Content\Plugins\overlayScrollbars\jquery.overlayScrollbars.js" />
+    <Content Include="Content\Plugins\overlayScrollbars\OverlayScrollbars.css" />
+    <Content Include="Content\Plugins\pace-progress\pace-theme.css" />
+    <Content Include="Content\Plugins\sans-serif\css\sans-serif-pro.css" />
+    <Content Include="Content\Plugins\sans-serif\fonts\source-sans-pro-v13-latin-300.svg" />
+    <Content Include="Content\Plugins\sans-serif\fonts\source-sans-pro-v13-latin-700.svg" />
+    <Content Include="Content\Plugins\sans-serif\fonts\source-sans-pro-v13-latin-italic.svg" />
+    <Content Include="Content\Plugins\sans-serif\fonts\source-sans-pro-v13-latin-regular.svg" />
+    <Content Include="Content\Plugins\sweetalert2\sweetalert2.css" />
+    <Content Include="Content\Plugins\sweetalert2\sweetalert2.js" />
+    <Content Include="Content\Plugins\toastr\toastr.css" />
+    <Content Include="Content\Plugins\toastr\toastr.min.js" />
+    <Content Include="Content\rtl\adminlte-rtl.css" />
+    <Content Include="Content\rtl\bootstrap-rtl.min.css" />
+    <Content Include="Content\rtl\bootstrap-rtl.min.js" />
+    <Content Include="Content\rtl\popper.min.js" />
+    <Content Include="Content\Site.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Plugins\fontawesome\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\Plugins\fontawesome\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\Plugins\fontawesome\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\Plugins\fontawesome\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\Plugins\fontawesome\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\Plugins\fontawesome\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\Plugins\fontawesome\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\Plugins\fontawesome\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\Plugins\fontawesome\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\Plugins\fontawesome\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\Plugins\fontawesome\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\Plugins\fontawesome\webfonts\fa-solid-900.woff2" />
+    <Content Include="Content\Plugins\sans-serif\fonts\source-sans-pro-v13-latin-300.eot" />
+    <Content Include="Content\Plugins\sans-serif\fonts\source-sans-pro-v13-latin-300.ttf" />
+    <Content Include="Content\Plugins\sans-serif\fonts\source-sans-pro-v13-latin-300.woff" />
+    <Content Include="Content\Plugins\sans-serif\fonts\source-sans-pro-v13-latin-300.woff2" />
+    <Content Include="Content\Plugins\sans-serif\fonts\source-sans-pro-v13-latin-700.eot" />
+    <Content Include="Content\Plugins\sans-serif\fonts\source-sans-pro-v13-latin-700.ttf" />
+    <Content Include="Content\Plugins\sans-serif\fonts\source-sans-pro-v13-latin-700.woff" />
+    <Content Include="Content\Plugins\sans-serif\fonts\source-sans-pro-v13-latin-700.woff2" />
+    <Content Include="Content\Plugins\sans-serif\fonts\source-sans-pro-v13-latin-italic.eot" />
+    <Content Include="Content\Plugins\sans-serif\fonts\source-sans-pro-v13-latin-italic.ttf" />
+    <Content Include="Content\Plugins\sans-serif\fonts\source-sans-pro-v13-latin-italic.woff" />
+    <Content Include="Content\Plugins\sans-serif\fonts\source-sans-pro-v13-latin-italic.woff2" />
+    <Content Include="Content\Plugins\sans-serif\fonts\source-sans-pro-v13-latin-regular.eot" />
+    <Content Include="Content\Plugins\sans-serif\fonts\source-sans-pro-v13-latin-regular.ttf" />
+    <Content Include="Content\Plugins\sans-serif\fonts\source-sans-pro-v13-latin-regular.woff" />
+    <Content Include="Content\Plugins\sans-serif\fonts\source-sans-pro-v13-latin-regular.woff2" />
+    <Content Include="Scripts\adminlte.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap\bootstrap.js" />
+    <Content Include="Scripts\ej2\ej.localetexts.ar.js" />
+    <Content Include="Scripts\ej2\ej2.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Areas\Manager\Views\MyTeam\Employees.cshtml" />
+    <Content Include="Areas\HR\Views\Appraisal\Sessions.cshtml" />
+    <Content Include="Areas\web.config" />
+    <Content Include="Areas\Manager\Views\MyTeam\Appraisals.cshtml" />
+    <Content Include="Areas\HR\Views\Appraisal\Appraisals.cshtml" />
+    <Content Include="Areas\HR\Views\Appraisal\KPIs.cshtml" />
+    <Content Include="Scripts\ej2\ej2.min.js.map" />
+    <Content Include="Areas\HR\Views\Appraisal\EditSession.cshtml" />
+    <Content Include="Areas\HR\Views\Appraisal\EditeOrCreateKPIs.cshtml" />
+    <Content Include="Areas\Manager\Views\MyTeam\Evaluate.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\pace.min.js" />
+    <Content Include="Scripts\Site.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Page.cshtml" />
+    <Content Include="Views\Account\AccessDenied.cshtml" />
+    <Content Include="Views\Shared\_NavBar.cshtml" />
+    <Content Include="Views\Shared\_SideBar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mvc.sitemap" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="packages.config" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CustomSiteMapPathHelperModel.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HRPortal.Business\HRPortal.Business.csproj">
+      <Project>{22fa15bc-bf90-4d7d-bd4d-d574b0c00b52}</Project>
+      <Name>HRPortal.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HRPortal.Core\HRPortal.Core.csproj">
+      <Project>{a28e3e40-8bd9-4ffa-8e22-ef8f270c75bd}</Project>
+      <Name>HRPortal.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HRPortal.Entities\HRPortal.Entities.csproj">
+      <Project>{a7553ffa-1f17-464a-b62a-1013274be6d3}</Project>
+      <Name>HRPortal.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HRPortal.Localization\HRPortal.Localization.csproj">
+      <Project>{c3cd7662-6404-4fad-b74e-896129173422}</Project>
+      <Name>HRPortal.Localization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HRPortal.ViewModels\HRPortal.ViewModels.csproj">
+      <Project>{d706aab2-6fbe-4c6d-aabc-fd85c15b176c}</Project>
+      <Name>HRPortal.ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\ej2\ej2.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50463</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50463/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

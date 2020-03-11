@@ -1,0 +1,12 @@
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.ViewModels\bin\Debug\HRPortal.ViewModels.dll
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.ViewModels\bin\Debug\HRPortal.ViewModels.pdb
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.ViewModels\bin\Debug\HRPortal.Entities.dll
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.ViewModels\bin\Debug\HRPortal.Localization.dll
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.ViewModels\bin\Debug\PetaPoco.dll
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.ViewModels\bin\Debug\HRPortal.Entities.pdb
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.ViewModels\bin\Debug\HRPortal.Localization.pdb
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.ViewModels\bin\Debug\ar\HRPortal.Localization.resources.dll
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.ViewModels\obj\Debug\HRPortal.ViewModels.csprojAssemblyReference.cache
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.ViewModels\obj\Debug\HRPortal.ViewModels.csproj.CopyComplete
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.ViewModels\obj\Debug\HRPortal.ViewModels.dll
+C:\Users\alaa.elsaied\repos\HR Portal\HRPortal\HRPortal.ViewModels\obj\Debug\HRPortal.ViewModels.pdb

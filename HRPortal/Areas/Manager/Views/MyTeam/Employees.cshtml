@@ -1,0 +1,61 @@
+﻿@using Syncfusion.EJ2
+@using HRPortal.Business.HR
+@{
+    ViewBag.Title = "Employees";
+    Layout = "~/Views/Shared/_Page.cshtml";
+}
+
+    <div class="control-section">
+        <div id="sessions_content">
+            @Html.EJS().Grid("grdEmployees").DataSource(EmployeesLogic.GetMyEmployees()).AllowSelection(false).AllowResizing().Height("300").Width("auto").QueryCellInfo("queryCellInfo").AllowPdfExport().AllowExcelExport().ToolbarClick("toolbarClick").Columns(col =>
+            {
+            col.Field("EmployeeID").Width(90).HeaderText(LocalizedStrings.ID).Add();
+            col.Field("EmployeeCode").Width(120).HeaderText(LocalizedStrings.EmployeeOracleCode).Add();
+            col.Field("FullName").HeaderText(LocalizedStrings.EmployeeName).Width("200").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+            col.Field("Email").HeaderText("Email ").Width("150").Add();
+            col.Field("BusinessUnitName").HeaderText("BusinessUnit Name ").Add();
+            col.Field("DepartmentName").HeaderText("Department Name ").Add();
+            col.Field("JobName").HeaderText("Job Name ").Width("200").Add();
+            col.Field("HireDate").HeaderText("Hire Date").Width("150").Format(new { type = "dateTime", format = "yyyy-MM-dd" }).Add();
+            col.Field("GenderStat").HeaderText("Gender").Add();
+            col.Field("Notes").HeaderText("Notes").Add();
+            col.Field("Status").HeaderText("Status").Template("#statusTemplate").Width("100").Add();
+            }).AllowPaging(true).PageSettings(page => page.PageSize(25)).Toolbar(new List<string>()
+            {
+                "ExcelExport", "PdfExport", "CsvExport", "Search"
+
+            }).EnableVirtualization(true).AllowSorting(true).AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.CheckBox); }).Locale(LocalizationHelper.CurrentLanguage)).Render()
+
+            <script>
+                function toolbarClick(args) {
+                    var gridObj = document.getElementById("grdEmployees").ej2_instances[0];
+                    if (args.item.id === 'grdEmployees_pdfexport') {
+                        gridObj.pdfExport();
+                    }
+                    if (args.item.id === 'grdEmployees_excelexport') {
+                        gridObj.excelExport();
+                    }
+                    if (args.item.id === 'grdEmployees_csvexport') {
+                        gridObj.csvExport();
+                    }
+                }
+                function queryCellInfo(args) {
+                    if (args.column.field === 'Status') {
+                        if (args.cell.textContent === "Active") {
+                            args.cell.querySelector(".statustxt").classList.add("e-activecolor");
+                            args.cell.querySelector(".statustemp").classList.add("e-activecolor");
+                        }
+                        else {
+                            args.cell.querySelector(".statustxt").classList.add("e-inactivecolor");
+                            args.cell.querySelector(".statustemp").classList.add("e-inactivecolor");
+                        }
+                    }
+                }
+            </script>
+            <script type="text/x-jsrender" id="statusTemplate">
+                <div id="status" class="statustemp">
+                    <span class="statustxt">${Status}</span>
+                </div>
+            </script>           
+        </div>
+    </div>

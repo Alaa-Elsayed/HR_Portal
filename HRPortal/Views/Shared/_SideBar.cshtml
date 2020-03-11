@@ -1,0 +1,149 @@
+﻿@using HRPortal.Core
+@using HRPortal.Business.Account
+<aside class="main-sidebar elevation-4 sidebar-dark-primary">
+    <!-- Brand Logo -->
+    <a href="#" class="brand-link">
+        <img src='@Url.Content("~/Content/Images/side_logo.png")'
+             alt="SPEED HR Portal"
+             class="brand-image img-circle elevation-3"
+             style="opacity: .8">
+        <span class="brand-text font-weight-light">HR Portal</span>
+    </a>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column text-sm nav-compact nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Employee -->
+                @if (UsersLogic.IsInRole(AppRoles.Employee))
+                {
+                    @*<li class="nav-header"><i class="nav-icon fas fa-user-tie"></i>&nbsp;Employee</li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-book-reader"></i>
+                                <p>
+                                    My Profile
+                                    <i class="right fas fa-angle-down"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                            </ul>
+                        </li>*@
+                }
+                <!-- Supervisor -->
+                @if (UsersLogic.IsInRole(AppRoles.Supervisor))
+                {
+                    <li class="nav-header"><i class="nav-icon fas fa-user-shield"></i>&nbsp;@LocalizedStrings.Supervisors</li>
+                    <li class='@(ViewContext.RouteData.Values["Controller"].ToString() == "MyTeam" ? "nav-item has-treeview menu-open" : "nav-item has-treeview")'>
+                        <a href="#" class='@(ViewContext.RouteData.Values["Controller"].ToString() == "MyTeam" ? "nav-link active" : "nav-link")'>
+                            <i class="nav-icon fas fa-medal"></i>
+                            <p>
+                                @LocalizedStrings.Appraisal
+                                <i class="right fas fa-angle-down"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview ">
+                            @*<li class="nav-item">
+                                    <a href='@Url.Action("Employees","MyTeam",new { Area = "Manager" })' class='@(string.Format("{0}.{1}",ViewContext.RouteData.Values["Controller"],ViewContext.RouteData.Values["Action"]) == "MyTeam.Employees" ? "nav-link active" : "nav-link")'>
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Employees</p>
+                                    </a>
+                                </li>*@
+                            <li class="nav-item">
+                                <a href='@Url.Action("Appraisals","MyTeam",new { Area = "Manager" })' class='@(string.Format("{0}.{1}",ViewContext.RouteData.Values["Controller"],ViewContext.RouteData.Values["Action"]) == "MyTeam.Appraisals" ? "nav-link active" : "nav-link")'>
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>@LocalizedStrings.Appraisals</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+                <!-- HR -->
+                @if (UsersLogic.IsInRole(AppRoles.HR))
+                {
+                    <li class="nav-header"><i class="nav-icon fas fa-users"></i>&nbsp;Human Resources</li>
+                    @*<li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon far fa-building"></i>
+                                <p>
+                                    Company
+                                    <i class="right fas fa-angle-down"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                            </ul>
+                        </li>*@
+                    @*<li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Employees
+                                    <i class="right fas fa-angle-down"></i>
+                                </p>
+                            </a>
+                        </li>*@
+                    <li class='@(ViewContext.RouteData.Values["Controller"].ToString() == "Appraisal" ? "nav-item has-treeview menu-open" : "nav-item has-treeview")'>
+                        <a href="#" class='@(ViewContext.RouteData.Values["Controller"].ToString() == "Appraisal" ? "nav-link active" : "nav-link")'>
+                            <i class="nav-icon fas fa-medal"></i>
+                            <p>
+                                Appraisal
+                                <i class="right fas fa-angle-down"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href='@Url.Action("Appraisals","Appraisal",new { Area = "HR" })' class='@(string.Format("{0}.{1}",ViewContext.RouteData.Values["Controller"],ViewContext.RouteData.Values["Action"]) == "Appraisal.Appraisals" ? "nav-link active" : "nav-link")'>
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Appraisals</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href='@Url.Action("Sessions","Appraisal",new { Area = "HR" })' class='@(string.Format("{0}.{1}",ViewContext.RouteData.Values["Controller"],ViewContext.RouteData.Values["Action"]) == "Appraisal.Sessions" ? "nav-link active" : "nav-link")'>
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Sessions</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href='@Url.Action("KPIs","Appraisal",new { Area = "HR" })' class='@(string.Format("{0}.{1}",ViewContext.RouteData.Values["Controller"],ViewContext.RouteData.Values["Action"]) == "Appraisal.KPIs" ? "nav-link active" : "nav-link")'>
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Performance Indicators</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    @*<li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-user-graduate"></i>
+                                <p>
+                                    Recruitment
+                                    <i class="right fas fa-angle-down"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview navmenu">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Candidates</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-fingerprint"></i>
+                                <p>
+                                    Attendance
+                                    <i class="right fas fa-angle-down"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                            </ul>
+                        </li>*@
+                }
+
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

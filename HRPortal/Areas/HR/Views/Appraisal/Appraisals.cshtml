@@ -1,0 +1,80 @@
+﻿@using Syncfusion.EJ2
+@using HRPortal.Business.HR
+@{
+    ViewBag.Title = string.Format("{0} ({1})", LocalizedStrings.Appraisals, PerformanceLogic.GetActiveSessionName());
+    Layout = "~/Views/Shared/_Page.cshtml";
+}
+<div id="appraisals_content">
+    @if (PerformanceLogic.CountActiveSessions() > 0)
+    {
+
+        @Html.EJS().Grid("grdActiveSession").DataSource(PerformanceLogic.GetActiveAppraisals()).AllowExcelExport().ToolbarClick("toolbarClick").AllowSorting(true).AllowReordering().ShowColumnChooser(true).QueryCellInfo("queryCellInfo").Height("100%").Width("auto").Columns(col =>
+         {
+             col.Field("EmployeeEvaluationID").HeaderText(LocalizedStrings.ID).Visible(false).Width(70).Add();
+             col.Field("BranchName").HeaderText(LocalizedStrings.BranchName).Width(100).Add();
+             col.Field("BusinessUnitName").HeaderText(LocalizedStrings.BusinessUnitName).Width(110).Add();
+             col.Field("EmployeeCode").HeaderText(LocalizedStrings.EmployeeOracleCode).Width(120).Add();
+             col.Field("FullName").HeaderText(LocalizedStrings.EmployeeName).Add();
+             col.Field("JobName").HeaderText(LocalizedStrings.JobName).Add();
+             col.Field("PerformanceSessionName").HeaderText("Session").Visible(false).Width(120).Add();
+             col.Field("KPIPercent").HeaderText("KPIs").Width(90).Add();
+             col.Field("CompetencyPercent").HeaderText("Competencies").Width(150).Add();
+             col.Field("FinalScorePercent").HeaderText("Total Score").Width(150).Add();
+         }).AllowPaging(true).PageSettings(page => page.PageSize(25).PageCount(10)).AllowGrouping(true).GroupSettings(group => group.Columns(new string[] { "BranchName" })).Toolbar(new List<object>()
+                  {
+                      "ExcelExport","ColumnChooser" ,"Search"
+
+                  }).AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.CheckBox); }).EnableRtl(LocalizationHelper.IsRighToLeft()).Locale(LocalizationHelper.CurrentLanguage).Render()
+
+        <script>
+                function toolbarClick(args) {
+                    var gridObj = document.getElementById("grdActiveSession").ej2_instances[0];
+                    if (args.item.id === 'grdActiveSession_excelexport') {
+                        gridObj.excelExport();
+                    }
+                }
+
+                function queryCellInfo(args) {
+                    if (args.column.field === 'Status') {
+                        if (args.cell.textContent === "Active") {
+                            args.cell.querySelector(".statustxt").classList.add("e-activecolor");
+                            args.cell.querySelector(".statustemp").classList.add("e-activecolor");
+                        }
+                        else {
+                            args.cell.querySelector(".statustxt").classList.add("e-inactivecolor");
+                            args.cell.querySelector(".statustemp").classList.add("e-inactivecolor");
+                        }
+                    }
+
+                    if (args.column.field === 'PublishedStatus') {
+                        if (args.cell.textContent === "Published") {
+                            args.cell.querySelector(".statustxt").classList.add("e-activecolor");
+                            args.cell.querySelector(".statustemp").classList.add("e-activecolor");
+                        }
+                        else {
+                            args.cell.querySelector(".statustxt").classList.add("e-inactivecolor");
+                            args.cell.querySelector(".statustemp").classList.add("e-inactivecolor");
+                        }
+                    }
+                }
+        </script>
+
+        <script id="sessionedittemp" type="text/x-template">
+            <a href='@Url.Action("Evaluate", "MyTeam", new { area = "Manager" })/${EmployeeEvaluationID}' style="color: green"><i class="fas fa-medal">&nbsp;</i>@LocalizedStrings.Evaluate</a>
+        </script>
+
+        <script id="FinalScoretemp" type="text/x-template">
+            ${FinalScore} %
+        </script>
+    }
+    else
+    {
+        <div style="padding-top:10px;padding-left:10px;padding-right:10px;">
+            <div class="alert alert-warning alert-dismissible">
+                <h6><i class="icon fas fa-exclamation-triangle"></i>No Active Sessions</h6>
+            </div>
+        </div>
+    }
+</div>
+
+
